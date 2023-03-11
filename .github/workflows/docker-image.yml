@@ -14,10 +14,16 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Login Docker to ACR
-      run: docker login "cheastuscr.azurecr.io"  -u "cheastuscr" -p "phs8zEYVCk0kXQPVPdpXTXk74M43EwcJfh+i66B1YN+ACRCztjpa"
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag cheastuscr.azurecr.io/chwiki:latest
-    - name: Push to ACR
-      run: docker push cheastuscr.azurecr.io/chwiki:latest
+    - name: Check docker-compose version
+      run:  docker-compose -v
+    - name: Run docker compose build  
+      run:  docker-compose build 
+    - name: show running docker
+      run:  docker-compose ps
+    #- name: Login Docker to ACR
+    #  run: docker login "cheastuscr.azurecr.io"  -u "cheastuscr" -p "phs8zEYVCk0kXQPVPdpXTXk74M43EwcJfh+i66B1YN+ACRCztjpa"
+    #- name: Build the Docker image
+    #  run: docker build . --file Dockerfile --tag cheastuscr.azurecr.io/chwiki:latest
+    #- name: Push to ACR
+    #  run: docker push cheastuscr.azurecr.io/chwiki:latest
 
